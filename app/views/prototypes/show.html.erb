@@ -1,0 +1,76 @@
+<main class="main">
+  <div class="inner">
+    <div class="prototype__wrapper">
+
+      <!-- プロトタイプタイトル -->
+      <p class="prototype__hedding"> <%= @prototype.name %> </p>
+
+      <!-- 投稿者 -->
+      <div class="prototype__user-wrapper">
+        <p class="prototype__user">
+          by <%= link_to @prototype.user.name, user_path(@prototype.user) %>
+        </p>
+      </div>
+
+      <!-- ✅ 投稿者本人だけが表示できる編集・削除ボタン -->
+      <% if user_signed_in? && current_user == @prototype.user %>
+        <div class="prototype__manage">
+          <%= link_to "編集する", edit_prototype_path(@prototype), class: :prototype__btn %>
+          <%= link_to "削除する", prototype_path(@prototype), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: :prototype__btn %>
+        </div>
+      <% end %>
+
+      <!-- 画像 -->
+      <div class="prototype_image" style="text-align: center;">
+        <% if @prototype.image.attached? %>
+          <%= image_tag @prototype.image.variant(resize_to_limit: [800, 800]).processed, style: "display: inline-block;" %>
+        <% else %>
+          <div style="width:800px;height:400px;background:#eee;display:inline-block;">画像なし</div>
+        <% end %>
+      </div>
+
+      <!-- 詳細情報 -->
+      <div class="prototype__body">
+        <div class="prototype__detail">
+          <p class="detail__title">キャッチコピー</p>
+          <p class="detail__message"><%= @prototype.catch_copy %></p>
+        </div>
+
+        <div class="prototype__detail">
+          <p class="detail__title">コンセプト</p>
+          <p class="detail__message"><%= @prototype.concept %></p>
+        </div>
+      </div>
+
+        <div class="prototype__comments">
+          <% if user_signed_in? %>
+            <%= form_with model: [@prototype, @comment], local: true do |f| %>
+              <div class="field">
+                <%= f.label :content, "コメント" %><br>
+                <%= f.text_area :content, rows: 3 %>
+              </div>
+              <div class="actions">
+                <%= f.submit "送信する", class: :form__btn %>
+              </div>
+            <% end %>
+          <% else %>
+            <p>コメントを投稿するにはログインが必要です。</p>
+          <% end %>
+
+          <ul class="comments_lists">
+            <% if @comments.any? %>
+              <% @comments.each do |comment| %>
+                <li class="comments_list">
+                  <%= comment.content %><br>
+                  <small>by <%= link_to(comment.user.name, user_path(comment.user), class: :comment_user) %></small>
+                </li>
+              <% end %>
+            <% else %>
+              <p>まだコメントはありません。</p>
+            <% end %>
+          </ul>
+        </div>
+
+    </div>
+  </div>
+</main>

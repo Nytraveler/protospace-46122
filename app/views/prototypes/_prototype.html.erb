@@ -1,0 +1,19 @@
+<li class="card">
+  <div class="thumb">
+    <% if prototype.image.attached? %>
+      <%= image_tag prototype.image.variant(resize_to_limit: [600, 600]).processed %>
+      <!-- もし vips エラーが出る場合は mini_magick を使う設定に -->
+    <% else %>
+      <div style="width:600px;height:300px;background:#eee;"></div>
+    <% end %>
+  </div>
+
+  <div class="card-body">
+    <h3 class="card-title"><%= link_to prototype.name, prototype_path(prototype) %></h3>
+    <p class="prototype__user">by <%= link_to current_user.name, user_path(current_user), class: "prototype__user" %></p>
+    <p><strong>キャッチコピー:</strong> <%= prototype.catch_copy %></p>
+    <p><strong>コンセプト:</strong> <%= prototype.concept %></p>
+  </div>
+</li>
+
+
