@@ -70,6 +70,9 @@ end
 gem 'devise'
 
 gem 'mini_magick'
+
 gem 'image_processing', '~> 1.13' # 参考カリキュラム通りにバージョン指定
 
-
+group :production do
+  gem 'pg'
+end
