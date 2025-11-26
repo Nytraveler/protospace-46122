@@ -70,6 +70,12 @@ gem 'mini_magick'
 
 gem 'image_processing', '~> 1.13' # 参考カリキュラム通りにバージョン指定
 
-group :production do
+# 開発・テスト環境では MySQL を使用
+group :development, :test do
   gem 'mysql2', '>= 0.5.3'
+end
+
+# 本番環境（Render）では PostgreSQL を使用
+group :production do
+  gem 'pg', '~> 1.5'
 end
