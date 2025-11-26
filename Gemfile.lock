@@ -168,8 +168,6 @@ GEM
     nokogiri (1.18.10-x86_64-linux-gnu)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (1.6.2-x86_64-darwin)
-    pg (1.6.2-x86_64-linux)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -286,8 +284,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mini_magick
-  mysql2 (~> 0.5)
-  pg
+  mysql2 (>= 0.5.3)
   puma (>= 5.0)
   rails (~> 7.1.0)
   selenium-webdriver
