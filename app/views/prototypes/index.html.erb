@@ -1,26 +1,27 @@
 <% if user_signed_in? %>
-<p class="greeting">
-  こんにちは、<%= link_to current_user.name, user_path(current_user), class: "greeting__link" %>さん
-</p>
-<% end %>
+  <p class="greeting">
+    こんにちは、<%= link_to current_user.name, user_path(current_user), class: "greeting__link" %>さん
+  </p>
 
-<div class="card__wrapper">
-  <% @prototypes.each do |prototype| %>
-    <div class="card">
-    <div class="card__img">
-      <% if prototype.image.attached? %>
-        <%= link_to image_tag(prototype.image, alt: "prototype image"), prototype_path(prototype) %>
-      <% else %>
-        <!-- 画像がない場合の代わりの表示（お好みで） -->
-        <%= link_to "No Image", prototype_path(prototype) %>
-      <% end %>
-    </div>
-      <span class="card__title"><%= prototype.name %></span>
-      <span class="card__summary"><%= prototype.catch_copy %></span>
-      <p class="prototype__user">
-        by <%= link_to prototype.user.name, user_path(prototype.user), class: "card__user" %>
-      </p>
-    </div>
-  <% end %>
-</div>
+  <div class="card__wrapper">
+    <% @prototypes.each do |prototype| %>
+      <div class="card">
+      <div class="card__img">
+        <% if prototype.image.attached? %>
+          <%= link_to image_tag(prototype.image, alt: "prototype image"), prototype_path(prototype) %>
+        <% else %>
+          <!-- 画像がない場合の代わりの表示（お好みで） -->
+          <%= link_to "No Image", prototype_path(prototype) %>
+        <% end %>
+      </div>
+        <span class="card__title"><%= prototype.name %></span>
+        <span class="card__summary"><%= prototype.catch_copy %></span>
+        <p class="prototype__user">
+          by <%= link_to prototype.user.name, user_path(prototype.user), class: "card__user" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
 
