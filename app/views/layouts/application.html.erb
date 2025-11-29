@@ -31,7 +31,18 @@
       </div>
     </header>
 
-    <%= yield %>
+    <% if controller_name == "sessions" && action_name == "new" %>
+      <!-- ログイン画面のときは inner / wrapper で囲まない -->
+      <%= yield %>
+    <% else %>
+      <!-- それ以外のページは wrapper → inner で囲む（プロトスペース本家構造） -->
+      <div class="wrapper">
+        <div class="inner">
+          <%= yield %>
+        </div>
+      </div>
+    <% end %>
+
     <footer class="footer">
       <p class="copyright">Copyright © PROTO SPACE All rights reserved.</p>
     </footer>

@@ -6,18 +6,18 @@
 
   <div class="field">
     <%= f.label :catch_copy, 'キャッチコピー' %><br>
-    <%= f.text_field :catch_copy, id: 'prototype_catch_copy' %>
+    <%= f.text_area :catch_copy, id: 'prototype_catch_copy',class: 'wide-input' %>
   </div>
 
   <div class="field">
     <%= f.label :concept, 'コンセプト' %><br>
-    <%= f.text_area :concept, rows: 5, id: 'prototype_concept' %>
+    <%= f.text_area :concept, id: 'prototype_concept',class: 'wide-input' %>
   </div>
 
   <div class="field">
-    <%= f.label :image, '画像' %><br>
-    <%= f.file_field :image, accept: 'image/*' %>
+    <%= f.label :image, 'プロトタイプの画像' %><br>
+    <%= f.file_field :image, accept: 'image/*',  class: "file-input" %>
   </div>
 
-  <%= f.submit '投稿する' %>
+  <%= f.submit '保存する', class:'form__btn' %>
 <% end %>

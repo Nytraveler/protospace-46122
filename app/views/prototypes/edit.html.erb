@@ -10,21 +10,21 @@
 
       <div class="field">
         <%= f.label :catch_copy, "キャッチコピー" %><br>
-        <%= f.text_field :catch_copy %>
+        <%= f.text_area :catch_copy ,class: 'wide-input'%>
       </div>
 
       <div class="field">
         <%= f.label :concept, "コンセプト" %><br>
-        <%= f.text_area :concept %>
+        <%= f.text_area :concept ,class: 'wide-input'%>
       </div>
 
       <div class="field">
-        <%= f.label :image, "画像" %><br>
-        <%= f.file_field :image %>
+        <%= f.label :image, "プロトタイプの画像" %><br>
+        <%= f.file_field :image, class: "file-input" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "更新する" %>
+        <%= f.submit "保存する" , class: "form__btn"%>
       </div>
     <% end %>
   </div>

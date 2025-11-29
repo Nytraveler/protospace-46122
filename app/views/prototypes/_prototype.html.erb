@@ -10,10 +10,11 @@
 
   <div class="card-body">
     <h3 class="card-title"><%= link_to prototype.name, prototype_path(prototype) %></h3>
+     <p class="card__summary"><%= prototype.catch_copy %></p>
+     
     <p class="prototype__user">
       by <%= link_to prototype.user.name, user_path(prototype.user), class: "prototype__user" %>
     </p>
-    <p><strong>キャッチコピー:</strong> <%= prototype.catch_copy %></p>
     <p><strong>コンセプト:</strong> <%= prototype.concept %></p>
   </div>
 </li>
